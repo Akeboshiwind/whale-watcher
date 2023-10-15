@@ -12,6 +12,8 @@
         labels (when-not (empty? labels)
                  (->> (str/split labels #",")
                       (map #(str/split % #"="))
+                      ;; Set a default value for labels without a value
+                      (map (fn [[k v]] [k (or v "")]))
                       (into {})))]
     {:image image
      :labels labels}))
