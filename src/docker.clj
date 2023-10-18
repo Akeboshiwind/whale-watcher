@@ -8,7 +8,7 @@
       :out))
 
 (defn parse-ps [line]
-  (let [[image labels] (str/split line #"\s+")
+  (let [[image labels] (str/split line #"\s" 2)
         labels (when-not (empty? labels)
                  (->> (str/split labels #",")
                       (map #(str/split % #"="))
